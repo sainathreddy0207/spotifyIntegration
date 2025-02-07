@@ -1,0 +1,32 @@
+.image-container {
+    position: relative;
+    display: inline-block;
+}
+
+.play-button {
+    position: relative;
+    top: -91px;
+    left: 45px;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.90s linear;
+}
+.image-container:hover .play-button {
+    opacity: 1;
+}
+
+.slds-card {
+    background: linear-gradient(242deg, #217c41, #191414); 
+    color: white;
+    background-color: black;
+}
+
+.album-name{
+    font-weight: bold;
+    color : white;
+}
+
+.artist-name{
+    font-family: Arial, Helvetica, sans-serif;
+    color: white
+}

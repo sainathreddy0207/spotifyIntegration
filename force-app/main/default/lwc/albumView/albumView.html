@@ -1,0 +1,35 @@
+<template>
+    <template if:true={albumSongsData}>
+      
+             <div class="slds-grid slds-wrap slds-grid_pull-padded slds-m-around_medium">
+                 <template for:each={albumSongsData} for:item="track">
+                     <div key={track.id} class="slds-col slds-size_1-of-3 slds-p-around_medium">
+                         <div class="slds-tile slds-tile_bordered slds-tile_media">
+                             <div class="slds-tile__media">
+                                 <div class="image-container">
+                                     <img src={albumCover} alt="Album cover" class="slds-image"
+                                         style="width: 150px; height: 150px; border-radius: 8px;" />
+                                     <lightning-button-icon class="slds-m-around_small play-button"
+                                         icon-name="utility:play" slot="actions"
+                                         onclick={playSelectedSong} data-id={track.uri}></lightning-button-icon>
+                                 </div>
+                             </div>
+                             <div class="slds-tile__content">
+                                <div class="slds-grid slds-wrap">
+                                    <a href={track.external_urls.spotify} target="_blank"
+                                        class="slds-text-heading_medium album-name">
+                                        {track.name}
+                                    </a>
+                                </div>
+                                 <p class="slds-text-body_regular artist-name">Artists: {track.artist}</p>
+                                 
+                             </div>
+                         </div>
+                     </div>
+                 </template>
+             </div>
+         
+
+    </template>
+ </template>
+ 

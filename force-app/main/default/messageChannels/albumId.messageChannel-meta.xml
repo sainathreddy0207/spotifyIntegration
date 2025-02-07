@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningMessageChannel xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This Lightning Message Channel sends information When Album Selected</description>
+    <isExposed>false</isExposed>
+    <lightningMessageFields>
+        <description>Selected  Album Id</description>
+        <fieldName>albumId</fieldName>
+    </lightningMessageFields>
+    <masterLabel>AlbumSelected</masterLabel>
+</LightningMessageChannel>
+
+
+https://api.spotify.com/v1/recommendations?seed_artists=4NHQUGzhtTLFvgF5SZesLK&seed_genres=classical%2Ccountry&seed_tracks=0c6xIDDpzE81m2q797ordA

@@ -1,0 +1,60 @@
+<template>
+
+        <div class="slds-grid slds-grid_align-spread slds-m-around_medium custom-card">
+
+            <div class="slds-col slds-size_8-of-12 custom-card">
+                
+                <strong style="font-weight: bold;color : white;">Recently Played Song</strong>
+                <div class="slds-grid slds-wrap slds-grid_pull-padded slds-m-around_medium">
+                    <template for:each={recentSongName} for:item="track">
+                        <div key={track.id} class="slds-col slds-size_3-of-12 slds-p-around_medium">
+                            <div class="slds-tile slds-tile_bordered slds-tile_media">
+                                <div class="slds-tile__media">
+                                    <div class="image-container">
+                                        <img src={track.songimage} alt="Album cover" class="slds-image"
+                                            style="width: 75px; height: 75px; border-radius: 8px;" />
+                                    </div>
+                                </div>
+                                <div class="slds-tile__content">
+                                    <a href={track.external_urls.spotify} target="_blank"
+                                        class="slds-text-body_regular album-name" style="font-weight: bold;color : white;">
+                                        {track.name}
+                                    </a>
+                                    <p class="slds-text-body_regular artist-name"  style="font-family: ui-sans-serif; color: white">Artists: {track.songartistNames}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+            </div>
+            <div class="slds-col slds-size_4-of-12">
+                <template if:true={currentPlayingSong}>
+                    <strong style="font-weight: bold;color : white;">Current Playing Song</strong>
+                    <div class="slds-tile slds-tile_bordered slds-tile_media">
+                        <div class="slds-tile__media">
+                            <div class="image-container">
+                                <img src={currentPlayingSong.image} alt="Album cover" class="slds-image"
+                                    style="width: 75px; height: 75px; border-radius: 8px;" />
+                            </div>
+                        </div>
+                        <div class="slds-tile__content">
+                            <a href={currentPlayingSong.external_urls.spotify} target="_blank"
+                                class="slds-text-body_regular" style="font-weight: bold;color : white;">
+                                {currentPlayingSong.name}
+                            </a>
+                            <p class="slds-text-body_regular" style="font-family: ui-sans-serif; color: white">
+                                Artists: {currentPlayingSong.songartistNames}
+                            </p>
+                        </div>
+                    </div>
+                </template>
+                <label style="font-weight: bold;color : white;">Volume</label>
+                <lightning-slider class="slds-m-around_medium" variant="label-hidden" step="1" min="0" max="100" value={volume}
+                    onchange={handlevolume} size="x-small"></lightning-slider>
+                   
+            </div>
+        </div>
+    
+    
+</template>
