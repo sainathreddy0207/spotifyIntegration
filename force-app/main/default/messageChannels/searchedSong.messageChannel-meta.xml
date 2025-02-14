@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningMessageChannel xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>This Lightning Message Channel sends information When track is Searched</description>
+    <isExposed>false</isExposed>
+    <lightningMessageFields>
+        <description>Searched Track</description>
+        <fieldName>searchtext</fieldName>
+    </lightningMessageFields>
+    <masterLabel>TrackName</masterLabel>
+</LightningMessageChannel>
+
+

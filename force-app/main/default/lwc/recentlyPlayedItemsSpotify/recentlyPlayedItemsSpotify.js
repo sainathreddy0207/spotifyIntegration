@@ -1,12 +1,18 @@
-import { LightningElement, track } from 'lwc';
+import { LightningElement, track,wire } from 'lwc';
 import recentlyPlayedSong from '@salesforce/apex/SpotifyIntegration.callSpotifyRecentlyPlayed';
 import changeVolume from '@salesforce/apex/SpotifyIntegration.changeVolume';
 import playSpotifySong from '@salesforce/apex/SpotifyIntegration.playSong';
-import currentPlayingSong from '@salesforce/apex/SpotifyIntegration.getCurrentPlayingSong'
-
+import currentPlayingSong from '@salesforce/apex/SpotifyIntegration.getCurrentPlayingSong';
+import logo from '@salesforce/resourceUrl/spotifyLogo';
+import {publish, MessageContext} from "lightning/messageService";
+import SEARCHED_TRACK from '@salesforce/messageChannel/searchedSong__c';
 
 export default class RecentlyPlayedItemsSpotify extends LightningElement {
 
+    @wire(MessageContext)
+    messageContext
+
+    spotifyLogo = logo;
     recentSongName = [];
     @track currentPlayingSong ;
 
@@ -16,7 +22,23 @@ export default class RecentlyPlayedItemsSpotify extends LightningElement {
         this.recentlyPlayedSongs();
         this.currentlyPlayingSong();     
 
+        setInterval(()=>{
+            this.currentlyPlayingSong();
+        },6000);
+
     }
+    changeHandler(event){
+        this.songName = event.target.value;
+    }
+
+    handleKeyDown(event) {     
+        if (event.key === 'Enter') {   
+            const searchedtrack = {songName:this.songName };
+            publish(this.messageContext, SEARCHED_TRACK, searchedtrack);       
+            
+        }
+    }
+
 
     recentlyPlayedSongs() {
         recentlyPlayedSong().then(result => {

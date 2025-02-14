@@ -1,8 +1,9 @@
 import { LightningElement,track,wire,api } from 'lwc';
 import SpotifySearch from '@salesforce/apex/SpotifyIntegration.searchInSpotify';
 import playSpotifySong from '@salesforce/apex/SpotifyIntegration.playSong';
-import {publish, MessageContext} from "lightning/messageService";
+import {publish,subscribe, MessageContext} from "lightning/messageService";
 import ALBUMID_SELECTED from '@salesforce/messageChannel/albumId__c';
+import SEARCHED_TRACK from '@salesforce/messageChannel/searchedSong__c';
 
 
 export default class SpotifyPlaybackAndSearch extends LightningElement {
@@ -17,8 +18,18 @@ export default class SpotifyPlaybackAndSearch extends LightningElement {
     messageContext
 
     
+    connectedCallback(){
+        this.subscribeToLMS();
+    }
+    subscribeToLMS(){
+        console.log('Testing it');
+         subscribe(this.messageContext, SEARCHED_TRACK, (message)=>this.handleMessage(message));
+    }
 
-    
+    handleMessage(message){
+        this.songName = message.songName;
+        this.searchSong();
+    }
     
     changeHandler(event){
         this.songName = event.target.value;
