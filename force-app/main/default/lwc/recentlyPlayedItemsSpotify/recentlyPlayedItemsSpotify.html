@@ -5,13 +5,13 @@
 
             <div class="slds-col slds-size_8-of-12 custom-card">
                 <div style="display: flex;flex-direction: flex-start;">
-                <img src={spotifyLogo} alt = "Spotify Image" style="width:159px;height:50px;margin: bottom 10px;"/>
-                <div style="display: flex;flex-direction: column;">
-                <label style="font-family: Arial, Helvetica, sans-serif;color: white"> Song Name</label>
-                <lightning-input name="songName" variant="label-hidden" placeholder="what do you want to search"
-                    onchange={changeHandler} 
-                    type="search" onkeydown={handleKeyDown}></lightning-input>   
-                </div>            
+                <img src={spotifyLogo} alt = "Spotify Image" style="width:77px;height:98px;margin: bottom 10px;"/>      
+                <div class="slds-col slds-size_2-of-3 slds-p-around_medium">
+                    <label class="artist-name" style="color:white"> Song Name</label>
+                    <lightning-input name="songName" variant="label-hidden" placeholder="what do you want to search"
+                        onchange={changeHandler} 
+                        type="search" onkeydown={handleKeyDown}></lightning-input>
+                </div>    
                 </div>
             <strong style="font-weight: bold;color : white; font-size:medium">Recently Played Song</strong>
                 <div class="slds-grid slds-wrap slds-grid_pull-padded slds-m-around_medium">

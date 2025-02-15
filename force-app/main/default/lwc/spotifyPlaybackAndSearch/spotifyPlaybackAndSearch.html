@@ -1,16 +1,9 @@
 <template>
 
     
-        <div class="slds-grid slds-gutters slds-m-around_medium">
-            <div class="slds-col slds-size_3-of-3 slds-p-around_medium">
-                <label class="artist-name"> Song Name</label>
-                <lightning-input name="songName" variant="label-hidden" placeholder="what do you want to search"
-                    onchange={changeHandler} 
-                    type="search" onkeydown={handleKeyDown}></lightning-input>
-            </div>
-        </div>
-
+        
         <template if:true={displayResult}>
+            <Strong style="color: white ;position: relative; left:26px">Search Details</Strong>
             <div class="slds-grid slds-wrap slds-grid_pull-padded slds-m-around_medium">
                 <template for:each={trackData} for:item="track">
                     <div key={track.id} class="slds-col slds-size_1-of-3 slds-p-around_medium">
